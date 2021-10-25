@@ -1,0 +1,24 @@
+[
+    {
+        "_id": {
+            "$oid": "6175942df265523eaac268d1"
+        },
+        "movie_id": 2,
+        "name": "SpiderMan",
+        "genres": [
+            "Action",
+            "sci-fi"
+        ]
+    },
+    {
+        "_id": {
+            "$oid": "6175944df265523eaac268d2"
+        },
+        "movie_id": 3,
+        "name": "BatMan",
+        "genres": [
+            "Action",
+            "sci-fi"
+        ]
+    }
+]
