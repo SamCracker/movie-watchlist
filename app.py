@@ -5,11 +5,17 @@ from resources.routes import initialize_routes
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
+import os
+from os.path import join, dirname
 
 app = Flask(__name__)
+dotenv_path = join(dirname(__file__), '.env')
 
 # print(load_dotenv())
-app.config["JWT_SECRET_KEY"] = "t1NP63m4wnBg6nyHYKfmc2TpCOGI4snn"
+jwt_secret_key = os.environ.get("JWT_SECRET_KEY")
+mongo_db_uri = os.environ.get("MONGO_URI")
+
+app.config["JWT_SECRET_KEY"] = jwt_secret_key
 
 api = Api(app)
 bcrypt = Bcrypt(app)
@@ -19,7 +25,7 @@ jwt = JWTManager(app)
 #     'host': 'mongodb+srv://dbUser:1234@flask-api-movie.q561z.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 # }
 
-app.config['MONGODB_HOST'] = "mongodb+srv://dbUser:1234@flask-api-movie.q561z.mongodb.net/movies_api?retryWrites=true&w=majority"
+app.config['MONGODB_HOST'] = mongo_db_uri
 app.config['JSON_AS_ASCII'] = False
 app.config['SECRET_KEY'] = "key"
 app.config['DEBUG'] = True
